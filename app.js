@@ -61,9 +61,6 @@ mongoose
 ====================== */
 
 
-// ✅ ALWAYS define dbUrl explicitly here
-const dbUrl = process.env.MONGO_URI;
-
 // ❌ Fail fast if env vars are missing
 if (!dbUrl) {
     console.error("❌ ERROR: MONGO_URI is missing");
