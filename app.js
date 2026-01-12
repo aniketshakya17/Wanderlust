@@ -59,24 +59,38 @@ mongoose
 /* ======================
    SESSION STORE
 ====================== */
-if (!dbUrl || !process.env.SECRET) {
-    throw new Error("Missing MONGO_URI or SECRET in environment variables");
+
+
+// ✅ ALWAYS define dbUrl explicitly here
+const dbUrl = process.env.MONGO_URI;
+
+// ❌ Fail fast if env vars are missing
+if (!dbUrl) {
+    console.error("❌ ERROR: MONGO_URI is missing");
+    process.exit(1);
 }
 
+if (!process.env.SECRET) {
+    console.error("❌ ERROR: SESSION SECRET is missing");
+    process.exit(1);
+}
+
+// ✅ Create session store
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     collectionName: "sessions",
     crypto: {
         secret: process.env.SECRET,
     },
-    touchAfter: 24 * 3600,
+    touchAfter: 24 * 3600, // 1 day
 });
 
-
+// ✅ Handle store errors safely
 store.on("error", (err) => {
-    console.log("SESSION STORE ERROR:", err);
+    console.error("❌ SESSION STORE ERROR:", err);
 });
 
+// ✅ Session configuration
 const sessionOptions = {
     store,
     secret: process.env.SECRET,
@@ -84,13 +98,14 @@ const sessionOptions = {
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-        maxAge: 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     },
 };
 
+// ✅ Use session + flash
 app.use(session(sessionOptions));
 app.use(flash());
+
 
 /* ======================
    PASSPORT CONFIG
