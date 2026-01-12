@@ -59,13 +59,19 @@ mongoose
 /* ======================
    SESSION STORE
 ====================== */
+if (!dbUrl || !process.env.SECRET) {
+    throw new Error("Missing MONGO_URI or SECRET in environment variables");
+}
+
 const store = MongoStore.create({
     mongoUrl: dbUrl,
+    collectionName: "sessions",
     crypto: {
         secret: process.env.SECRET,
     },
     touchAfter: 24 * 3600,
 });
+
 
 store.on("error", (err) => {
     console.log("SESSION STORE ERROR:", err);
