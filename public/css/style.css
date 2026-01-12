@@ -1,142 +1,177 @@
-body{
-    font-family: "Plus Jakarta Sans", sans-serif !important;
-    display: flex;
-    flex-direction: column;
-    min-height:100vh;
-    margin:0;
-    padding:0;
-   
-   
-   
-}
-.container{
-    flex:1;
-
+/* ======================
+   GLOBAL
+====================== */
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar{
-    height:4rem;
-    background-color:white;
+.container {
+  flex: 1;
 }
-.fa-compass{ 
-      
-    color:#fe424d;
-    font-size: 2rem;
+
+/* ======================
+   NAVBAR
+====================== */
+.navbar {
+  height: 4rem;
+  background-color: white;
 }
+
+.fa-compass {
+  color: #fe424d;
+  font-size: 2rem;
+}
+
 .nav-link {
-
-    color:#222222 !important;
-}
-#navbarNavAltMarkup{
-    font-size: 1.1rem;
-
+  color: #222222 !important;
 }
 
-
-/* footer */
-
-
-.container {  
-    flex: 1;  
+#navbarNavAltMarkup {
+  font-size: 1.05rem;
 }
 
-.f-info-links a{
-    text-decoration: none;
-    color: #222222;
-}
-.f-info-links a :hover{
-    text-decoration: underline;
-}
-.f-info-links ,.f-info-socials ,.f-info-brand{
-    width:100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.f-info-socials i{
-    font-size:1.2rem;
-    margin-right:1rem;
- 
-}
-.f-info{
-    display: flex;
-    height: 8rem;
-    color:white;
-    background-color: #333;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
-    text-align: center;
+/* ======================
+   FOOTER
+====================== */
+.f-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  height: auto;
+  padding: 1rem;
+  text-align: center;
 }
 
-.listing-card{
-    border:none !important;
-    margin-bottom: 2rem;
-}
-.card-img-top{
-    border-radius: 1rem !important;
-    width:100% !important;
-    object-fit: cover !important;
-}
-
-.card-body{
-    padding:0 !important;
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.4rem 0;
 }
 
-.card-text p{
-    font-weight: 400 !important;
-}
-.card-link{
-    text-decoration: none;
-}
-.card-img-overlay{
-    opacity: 0;
-}
-.card-img-overlay:hover {
-    opacity: 0.2;
-    background-color:white;
-}
-.btn-dark{
-    background-color: #fe424d !important;
-    border:none !important;
-}
-.show-img{
-    height:30vh;
-}
-.show-card{
-    padding-left:0;
-    padding-right:0;
-}
-/* .f-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    width: 100%;
-    margin-top: auto; 
-} */
-.f-info a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
+.f-info-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 8px;
 }
 
-.f-info a:hover {   
-    text-decoration: underline;
+.f-info-links a:hover {
+  text-decoration: underline;
 }
+
 .f-info-socials i {
-    transition: transform 0.2s ease-in-out;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  transition: transform 0.2s ease-in-out;
 }
 
 .f-info-socials i:hover {
-    transform: scale(1.3);
+  transform: scale(1.3);
 }
 
-#map{
-    height:400px;
-    width:80vh;
+/* ======================
+   LISTINGS / CARDS
+====================== */
+.listing-card {
+  border: none !important;
+  margin-bottom: 2rem;
+}
+
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+.card-body {
+  padding: 0.75rem 0 !important;
+}
+
+.card-text {
+  font-weight: 400;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+.card-img-overlay {
+  opacity: 0;
+}
+
+.card-img-overlay:hover {
+  opacity: 0.15;
+  background-color: white;
+}
+
+/* ======================
+   BUTTONS
+====================== */
+.btn-dark {
+  background-color: #fe424d !important;
+  border: none !important;
+}
+
+/* ======================
+   SHOW PAGE
+====================== */
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.show-img {
+  max-height: 450px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ======================
+   MAP
+====================== */
+#map {
+  height: 350px;
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+/* ======================
+   MOBILE OPTIMIZATION
+====================== */
+@media (max-width: 768px) {
+  h2,
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  .show-img {
+    max-height: 260px;
+  }
+
+  #map {
+    height: 220px;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar {
+    height: auto;
+    padding: 0.5rem 1rem;
+  }
 }
